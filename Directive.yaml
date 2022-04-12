@@ -1,0 +1,20 @@
+identifier: com.suborbital.restaurants
+appVersion: v0.1.0
+atmoVersion: v0.4.0
+
+connections:
+  database:
+    type: postgresql
+    connectionString: postgresql://docker:docker@postgres:5432/docker
+
+queries:
+  - name: "SelectAllRestaurants"
+    query: |-
+      SELECT * FROM restaurants
+
+handlers:
+  - type: request
+    resource: /restaurants
+    method: GET
+    steps:
+      - fn: readall
